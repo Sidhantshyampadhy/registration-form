@@ -1,0 +1,88 @@
+.content {
+    align-items: center;
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(235, 26, 197, 1) 64%, rgba(0, 212, 255, 1) 100%);
+    height: 100vh;
+}
+
+.card {
+    background-color: #2a2d39;
+    color: #fff;
+    font-size: 3vh;
+    font-weight: 600;
+    text-align: center;
+    width: 100%;
+    min-height: 50vh;
+}
+
+.checkbox {
+    background-color: #2a2d39;
+}
+
+.sub-title {
+    color: #fff;
+    font-size: 1vh;
+    font-weight: 300;
+}
+
+.form-control {
+    background-color: #222531;
+    border: 2px solid #3E4150;
+    color: #fff;
+    padding-left: 4vh;
+}
+
+.icon {
+    color: #3E4150;
+    font-size: 2vh;
+}
+
+.input-group-prepend i {
+    position: absolute;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Raleway");
+
+form {
+    max-width: 30em;
+    position: relative;
+}
+
+form .data li i {
+    float: right;
+    color: #888;
+    cursor: pointer;
+}
+
+form .input-group-text {
+    border-radius: 50%;
+    width: 5em;
+    color: #fff;
+    position: absolute;
+    cursor: pointer;
+}
+
+form .input-group-text i {
+    font-size: 2em;
+}
+
+.todo-list {
+    font-size: 1.5vh;
+    font-weight: 300;
+    color: #fff;
+}
+
+form .form-control {
+    height: 3em;
+    font-family: "Raleway";
+}
+
+.delete-button {
+    background-color: #888;
+    color: #fff;
+    font-size: 1.5vh;
+    padding: 0 1vh;
+}
+
+form .form-control:focus {
+    box-shadow: 0;
+}

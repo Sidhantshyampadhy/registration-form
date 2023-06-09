@@ -1,0 +1,44 @@
+<div class="w-100 d-flex flex-row justify-content-center content">
+    <div class="h-100 todo-card">
+        <div class="m-5 card">
+            <div>Todo</div>
+            <hr />
+            <div class="p-4">
+                <div>Thursday</div>
+                <div class="sub-title">May 23, 2017</div>
+                <form class="pt-5">
+                    <div [formGroup]="todoForm" novalidate>
+                        <div class="input-group-prepend">
+                            <i class="pt-2 m-2 d-flex fa fa-list icon"></i>
+                            <input type="text" #todo class="form-control" placeholder="Add Todo" formControlName="value"
+                                (keydown.enter)="addTodo(todo.value)" />
+                        </div>
+                    </div>
+                    <div class="data">
+                        <ul class="list-unstyled">
+                            <li class="d-flex flex-row justify-content-between align-items-center"
+                                *ngFor="let todo of todoArray">
+                                <div>
+                                    <input class="checkbox" [checked]="checked" formControlName="checked"
+                                        type="checkbox">
+                                    <span class="m-1 todo-list">{{todo.value}}</span>
+                                </div>
+                                <div class="d-flex flex-row justify-content-between">
+                                    <button class="m-1 delete-button" type="button"
+                                        (click)="editable= !editable">Edit</button>
+                                    <button class="m-1 delete-button" type="button"
+                                        (click)="deleteItem(todo)">Delete</button>
+                                </div>
+                                <div *ngIf="editable">
+                                    <input type="text"
+                                    class="form-control" placeholder="Add Todo" formControlName="editableTodoItem"
+                                      (keydown.enter)="saveItem(todo)" />
+                                  </div>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
