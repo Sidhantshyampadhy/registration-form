@@ -1,6 +1,13 @@
 import { Component, Input } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { Todo1 } from '../todo';
+import {
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { Todo } from '../todo';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-todo',
@@ -8,25 +15,31 @@ import { Todo1 } from '../todo';
   styleUrls: ['./todo.component.css'],
 })
 export class TodoComponent {
-  todoArray: Todo1[] = [];
+  todoArray: Todo[] = [];
   todo!: FormArray;
   todoForm!: FormGroup;
   checked: boolean = true;
-  value: any;
+  value!: string;
   editable = false;
   editableTodoItem!: FormControl;
-  constructor(private fb: FormBuilder) {
+  serviceLink: any;
+  todoService: any;
+  today = new Date().toISOString();
+
+  constructor(private fb: FormBuilder, public AppService: AppService) {
     this.todoForm = this.fb.group({
       checked: fb.control(true),
-      value: this.value,
+      value: [this.value, Validators.required],
     });
-    localStorage.getItem('todoArray');
+    this.serviceLink = this.AppService.getData();
+    this.todoService = this.AppService.setData();
+    this.serviceLink;
   }
 
-  saveItem(todo: Todo1) {
-    todo.value = this.editableTodoItem.value;
-    console.log(this.todoArray);
+  saveItem(todo: Todo) {
+    todo.value = this.editableTodoItem?.value;
     this.editable = false;
+    console.log(todo);
   }
 
   addTodo(value: string) {
@@ -34,19 +47,15 @@ export class TodoComponent {
       this.todoArray?.unshift({
         id: this.todoArray.length + 1,
         value,
-        checked: true,
+        checked: this.checked,
       });
-      localStorage.setItem('todoArray', JSON.stringify(this.todoArray));
-      console.log(this.todoArray);
-    } else {
-      alert('Field required **');
+      this.todoService;
     }
   }
 
-  deleteItem(todo: any) {
+  deleteItem(todo: Todo) {
     this.todoArray.forEach((value, index) => {
       if (todo == this.todoArray[index]) this.todoArray.splice(index, 1);
     });
-    console.log(this.todoArray);
   }
 }

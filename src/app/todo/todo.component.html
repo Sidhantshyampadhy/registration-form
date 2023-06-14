@@ -4,40 +4,46 @@
             <div>Todo</div>
             <hr />
             <div class="p-4">
-                <div>Thursday</div>
-                <div class="sub-title">May 23, 2017</div>
+                <div>{{today | date: 'EEEE'}}</div>
+                <div class="sub-title">{{today | date:'longDate'}}</div>
                 <form class="pt-5">
                     <div [formGroup]="todoForm" novalidate>
                         <div class="input-group-prepend">
                             <i class="pt-2 m-2 d-flex fa fa-list icon"></i>
-                            <input type="text" #todo class="form-control" placeholder="Add Todo" formControlName="value"
-                                (keydown.enter)="addTodo(todo.value)" />
+                            <input type="text" #createtodo class="form-control" placeholder="Add Todo"
+                                formControlName="value" (keydown.enter)="addTodo(createtodo.value)" />
+                            <div *ngIf="todoForm.controls['value'].invalid && (todoForm.controls['value'].dirty || todoForm.controls['value'].touched)"
+                                class="alert alert-danger">
+                                <div *ngIf="todoForm.controls['value'].errors?.['required']">
+                                    Task is required.
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="data">
-                        <ul class="list-unstyled">
-                            <li class="d-flex flex-row justify-content-between align-items-center"
-                                *ngFor="let todo of todoArray">
-                                <div>
-                                    <input class="checkbox" [checked]="checked" formControlName="checked"
-                                        type="checkbox">
-                                    <span class="m-1 todo-list">{{todo.value}}</span>
-                                </div>
-                                <div class="d-flex flex-row justify-content-between">
-                                    <button class="m-1 delete-button" type="button"
-                                        (click)="editable= !editable">Edit</button>
-                                    <button class="m-1 delete-button" type="button"
-                                        (click)="deleteItem(todo)">Delete</button>
-                                </div>
-                                <div *ngIf="editable">
-                                    <input type="text"
-                                    class="form-control" placeholder="Add Todo" formControlName="editableTodoItem"
-                                      (keydown.enter)="saveItem(todo)" />
-                                  </div>
-                            </li>
-                        </ul>
-                    </div>
                 </form>
+                <div class="data">
+                    <ul class="list-unstyled">
+                        <li class="d-flex flex-row justify-content-between align-items-center"
+                            *ngFor="let todo of todoArray">
+                            <div>
+                                <input class="checkbox" [checked]="checked" formControlName="checked" type="checkbox">
+                                <span class="m-1 todo-list">{{todo.value}}</span>
+                            </div>
+                            <div class="d-flex flex-row justify-content-between">
+                                <button class="m-1 delete-button" type="button"
+                                    (click)="editable= !editable">Edit</button>
+                                <button class="m-1 delete-button" type="button"
+                                    (click)="deleteItem(todo)">Delete</button>
+                            </div>
+                            <div *ngIf="editable">
+                                <form>
+                                    <input type="text" class="form-control" placeholder="Add Todo" [value]="todo.value"
+                                        formControlName="editableTodoItem" (keydown.enter)="saveItem(todo)" />
+                                </form>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
