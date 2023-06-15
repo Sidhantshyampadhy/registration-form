@@ -1,0 +1,25 @@
+<div class="d-flex flex-column">
+    <div class="titleline">
+        <a href="{{ storyDetail.url }}">
+            <i class="m-1 icon fa fa-arrow-up"></i>
+        </a>
+        <a href="{{ storyDetail.url }}">{{
+            storyDetail.title
+            }}</a>
+    </div>
+    <div>
+        <span class="subline">
+            <span class="score">{{ storyDetail.score }} points</span>
+            by {{ storyDetail.by }}
+            <span class="age">
+                <span> {{ storyDetail.time | date: 'shortTime' }} </span>
+            </span>
+            | <span>
+                <a class="link" href="{{ storyDetail.url }}"> hide </a>
+            </span> |
+            <span>
+                <a class="link" href="{{storyDetail.url}}"> {{ storyDetail.descendants }} comments </a>
+            </span>
+        </span>
+    </div>
+</div>

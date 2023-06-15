@@ -1,0 +1,72 @@
+.navbar {
+    background-color: #ff6600;
+}
+
+.body {
+    background-color: #f6f6ef;
+    padding: 2vh 0vh 5vh 5vh;
+}
+
+.titleline {
+    font-size: 1.8vh;
+}
+
+.subline {
+    font-size: 1.2vh;
+    color: #828282;
+    padding-left: 2.5vh;
+}
+
+.sno {
+    font-size: 2vh;
+    color: #828282;
+}
+
+a {
+    text-decoration: none !important;
+    color: #000000;
+}
+
+.link {
+    color: #828282;
+}
+
+.footerLink {
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 1.5vh;
+}
+
+a:hover {
+    color: #828282;
+}
+
+.icon {
+    color: #828282;
+    font-size: 1.5vh;
+}
+
+.moreButton {
+    color: firebrick;
+    cursor: pointer;
+}
+
+#loading{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 150px;
+    height: 150px;
+    margin: -75px 0 0 -75px;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    }
+      
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
